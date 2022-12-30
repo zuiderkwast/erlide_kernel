@@ -394,7 +394,7 @@ format_args1([], _) ->
 
 %% Mimic catch behaviour
 catch_value(error, Reason) ->
-    {'EXIT',{Reason,get_stacktrace()}};
+    {'EXIT',{Reason,get_stacktrace()}}; %% FIXME: there are more of this in this module
 catch_value(exit, Reason) ->
     {'EXIT',Reason};
 catch_value(throw, Reason) ->
