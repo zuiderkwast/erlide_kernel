@@ -23,6 +23,8 @@
 
 -compile({no_auto_import, [error/1, error/2]}).
 
+-compile({nowarn_deprecated_function, [{code, is_module_native, 1}]}).
+
 %%
 %% API Functions
 %%
