@@ -31,7 +31,8 @@
 %% Called via the error handler.
 %%--------------------------------------------------------------------
 eval(Mod, Func, Args) ->
-    SaveStacktrace = erlang:get_stacktrace(), %% FIXME: How to handle?
+    %% SaveStacktrace = erlang:get_stacktrace(), % FIXME: How to handle?
+    SaveStacktrace = [],                        % <- Temporary solution.
     Meta = dbg_ieval:eval(Mod, Func, Args),
     Mref = erlang:monitor(process, Meta),
     msg_loop(Meta, Mref, SaveStacktrace).

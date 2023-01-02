@@ -394,7 +394,7 @@ format_args1([], _) ->
 
 %% Mimic catch behaviour
 catch_value(error, Reason) ->
-    {'EXIT',{Reason,get_stacktrace()}}; %% FIXME: there are more of this in this module
+    {'EXIT',{Reason,get_stacktrace()}};
 catch_value(exit, Reason) ->
     {'EXIT',Reason};
 catch_value(throw, Reason) ->
@@ -938,10 +938,10 @@ expr({dbg,Line,raise,As0}, Bs0, #ieval{level=Le}=Ieval0) ->
     trace(return, {Le,Error}),
     {value,Error,Bs}
     catch
-    _:_ ->
-        Stk = erlang:get_stacktrace(),	%Possibly truncated.
-        StkFun = fun(_) -> Stk end,
-        do_exception(Class, Reason, StkFun, Bs, Ieval)
+        _:_:Stk ->
+            %% Stk is possibly truncated.
+            StkFun = fun(_) -> Stk end,
+            do_exception(Class, Reason, StkFun, Bs, Ieval)
     end;
 expr({dbg,Line,throw,As0}, Bs0, #ieval{level=Le}=Ieval0) ->
     Ieval = Ieval0#ieval{line=Line},
