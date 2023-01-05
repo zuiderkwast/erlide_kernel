@@ -13,5 +13,5 @@
 
 	<artifactId>org.erlide.kernel.site</artifactId>
 	<packaging>eclipse-repository</packaging>
-<version>0.115.4-SNAPSHOT</version>
+<version>0.115.5-SNAPSHOT</version>
 </project>
