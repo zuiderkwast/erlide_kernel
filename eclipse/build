@@ -13,6 +13,8 @@ rm -rf org.erlide.kernel.ide/ebin
 
 mkdir -p org.erlide.kernel.common/ebin
 mkdir -p org.erlide.kernel.debugger/ebin
+mkdir -p org.erlide.kernel.debugger/ebin/23
+mkdir -p org.erlide.kernel.debugger/ebin/24
 mkdir -p org.erlide.kernel.debugger/ebin/25
 mkdir -p org.erlide.kernel.ide/ebin
 
@@ -20,6 +22,8 @@ mkdir -p org.erlide.kernel.ide/ebin
 
 find ../common/_build/default/lib -type f \( -name "*.beam" -o -name "*.app" \) -exec cp {} org.erlide.kernel.common/ebin/ \;
 find ../debugger/erlide_debugger/_build/default/lib -type f \( -name "*.beam" -o -name "*.app" \) ! -path "*/erlide_debugger_25/*" -exec cp {} org.erlide.kernel.debugger/ebin/ \;
+find ../debugger/erlide_debugger_23/_build/default/lib -type f \( -name "*.beam" -o -name "*.app" \) -exec cp {} org.erlide.kernel.debugger/ebin/23/ \;
+find ../debugger/erlide_debugger_24/_build/default/lib -type f \( -name "*.beam" -o -name "*.app" \) -exec cp {} org.erlide.kernel.debugger/ebin/24/ \;
 find ../debugger/erlide_debugger_25/_build/default/lib -type f \( -name "*.beam" -o -name "*.app" \) -exec cp {} org.erlide.kernel.debugger/ebin/25/ \;
 find ../ide/_build/default/lib -type f \( -name "*.beam" -o -name "*.app" \) -exec cp {} org.erlide.kernel.ide/ebin/ \;
 

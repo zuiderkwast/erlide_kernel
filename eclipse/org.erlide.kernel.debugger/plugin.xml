@@ -6,7 +6,17 @@
      <beam_dir
             path="ebin"
             context="debugger"
-            otp_version="25">
+            otp_version="23">
+      </beam_dir>
+     <beam_dir
+            path="ebin/23"
+            context="debugger"
+            otp_version="23">
+      </beam_dir>
+     <beam_dir
+            path="ebin/24"
+            context="debugger"
+            otp_version="24">
       </beam_dir>
      <beam_dir
             path="ebin/25"

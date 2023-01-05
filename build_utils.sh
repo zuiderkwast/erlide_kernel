@@ -1,6 +1,6 @@
 #! /bin/bash -e
 
-declare -A OTP_VSNS=( ["25"]="25.2" )
+declare -A OTP_VSNS=( ["23"]="23.3.4.18" ["24"]="24.3.4.7" ["25"]="25.2" )
 
 build_project() {
     REBAR=$1
@@ -18,13 +18,15 @@ build_project() {
 }
 
 build_projects() {
-    build_project erlide_common 25 "$@"
+    build_project erlide_common 23 "$@"
+    build_project erlide_debugger_23 23 "$@"
+    build_project erlide_debugger_24 24 "$@"
     build_project erlide_debugger_25 25 "$@"
-    build_project erlide_debugger 25 "$@"
+    build_project erlide_debugger 23 "$@"
 
-    build_project erlide_tools 25 "$@"
+    build_project erlide_tools 23 "$@"
 
-    build_project erlide_ide 25 "$@"
+    build_project erlide_ide 23 "$@"
 }
 
 assemble_eclipse_plugin() {
@@ -39,6 +41,10 @@ assemble_eclipse_plugin() {
     mkdir -p org.erlide.kernel/debugger
     cp erlide_debugger/_build/default/lib/*/ebin/*.* org.erlide.kernel/debugger
 
+    mkdir -p org.erlide.kernel/debugger/23
+    cp erlide_debugger_23/_build/default/lib/*/ebin/*.* org.erlide.kernel/debugger/23
+    mkdir -p org.erlide.kernel/debugger/24
+    cp erlide_debugger_24/_build/default/lib/*/ebin/*.* org.erlide.kernel/debugger/24
     mkdir -p org.erlide.kernel/debugger/25
     cp erlide_debugger_25/_build/default/lib/*/ebin/*.* org.erlide.kernel/debugger/25
 
